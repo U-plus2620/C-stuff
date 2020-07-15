@@ -9,3 +9,11 @@ void modify_node(struct node *Llist_head, int location, void *data, char *type);
 int evaluate(char *type);
 void print(void *data, char *type);
 void printList(struct node *Llist_head);
+
+#define STRING_SIZE 50
+
+struct node{
+	char *type;
+	void *data;
+	struct node *next;
+}Node;

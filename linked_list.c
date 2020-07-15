@@ -2,18 +2,15 @@
 #include<stdlib.h>
 #include<string.h>
 #include "linked_list.h"
+/*
 #define STRING_SIZE 50
-
-/* TO DO */
-//add error checking, fprintf, and an int return value from the void function so other 
-//programs can us the return funtions as an error checking means.
 
 struct node{
 	char *type;
 	void *data;
 	struct node *next;
 }Node;
-
+*/
 void *errorchecked_malloc(unsigned int size) { // An error-checked errorchecked_malloc() function
 /*This function was copied from the book "Hacking the art of exploitation" 
 by jon erickson published by "no starch press" */
@@ -153,7 +150,7 @@ void printList(struct node *head){
         	      }
       puts("YOU HAVE REACHED THE END OF THE ROAD....");
 }
-
+/*
 void main(void){
 	
 	struct node *Linked_list_head;//declare node head
@@ -202,4 +199,5 @@ void main(void){
 	printList(Linked_list_head2);
 
 }
+*/
 
