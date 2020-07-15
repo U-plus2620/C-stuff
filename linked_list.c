@@ -2,15 +2,8 @@
 #include<stdlib.h>
 #include<string.h>
 #include "linked_list.h"
-/*
-#define STRING_SIZE 50
 
-struct node{
-	char *type;
-	void *data;
-	struct node *next;
-}Node;
-*/
+
 void *errorchecked_malloc(unsigned int size) { // An error-checked errorchecked_malloc() function
 /*This function was copied from the book "Hacking the art of exploitation" 
 by jon erickson published by "no starch press" */
@@ -40,7 +33,6 @@ void append_node(struct node *Llist_head, void *data, char *type){
                         CURRENT=CURRENT->next;
                 }
                 CURRENT->next=new_node;
-                printf("DEBUG:next points to %p\n", CURRENT->next);
                 CURRENT=new_node;
                 CURRENT->type=type;
                 CURRENT->data=data;
@@ -56,7 +48,6 @@ struct node *preppend_node(struct node *Llist_head, void *data, char *type){
 }
 
 void insert_node(struct node *Llist_head, int location, void *data, char *type){
-	puts("DEBUG:inserting");
 		int counter=-1;
 		struct node *new_node=(struct node *)errorchecked_malloc(sizeof(struct node));
 		struct node *prev_node=NULL;
@@ -137,7 +128,7 @@ void print(void *data, char *type){
             printf("type is %s and data is %s\n",type,(char *)data);
             break;
         default:
-            puts("thats all the hats...");
+            fprintf(stderr,"invalid argument data type %s\n",type);
             break;
     }
     
@@ -148,56 +139,7 @@ void printList(struct node *head){
 			print(CURRENT->data, CURRENT->type);
 			CURRENT=CURRENT->next;
         	      }
-      puts("YOU HAVE REACHED THE END OF THE ROAD....");
+      puts("END OF LIST REACHED");
 }
-/*
-void main(void){
-	
-	struct node *Linked_list_head;//declare node head
-	struct node *Linked_list_head2;//declare node head
-	int a=1;
-	float b=3.1415926;
-	char c='W';
-	char d[STRING_SIZE];
-	strcpy(d,"we did it!!!");
-	puts("DEBUG:making first linked list");
-	Linked_list_head=create_head(Linked_list_head,&a,"int");//Linked_list_head is the linked list head pointer
-	append_node(Linked_list_head,&b,"float");
-	append_node(Linked_list_head,&c,"char");
-	append_node(Linked_list_head,&d,"string");
-	printList(Linked_list_head);
 
-	int e=50038;
-	float f=5.786;
-	char g='P';
-	char h[STRING_SIZE];
-	strcpy(d,"we did it yet again!!!");
-	puts("DEBUG:making second linked list");
-	Linked_list_head2=create_head(Linked_list_head2,&g,"char");//Linked_list_head is the linked list head pointer
-	append_node(Linked_list_head2,&f,"float");
-	append_node(Linked_list_head2,&h,"string");
-	append_node(Linked_list_head2,&e,"int");
-	printList(Linked_list_head2);
-
-	char i[STRING_SIZE];
-	strcpy(i,"PREPENDED NODE!");
-	puts("prepending node to second linked list");
-	Linked_list_head2=preppend_node(Linked_list_head2,&i,"string");
-	printList(Linked_list_head2);
-	
-	int j=99999;
-	puts("inserting node in second linked list");
-	insert_node(Linked_list_head2,2,&j,"int");
-	printList(Linked_list_head2);
-
-	puts("deleting node from second linked list");
-	delete_node(Linked_list_head2, 2);
-	printList(Linked_list_head2);
-
-	puts("deleting head from second linked list");
-	Linked_list_head2=delete_head(Linked_list_head2);
-	printList(Linked_list_head2);
-
-}
-*/
 
